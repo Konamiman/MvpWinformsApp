@@ -1,0 +1,51 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        xmlns:testMultiBinding="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="Window1" Height="300" Width="300">
+    <Grid>
+    <Grid.Resources>
+        <testMultiBinding:TestMultiBindingConverter x:Key="TestMultiBindingConverter"></testMultiBinding:TestMultiBindingConverter>
+    </Grid.Resources>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="100"/>
+        <ColumnDefinition Width="100"/>
+    </Grid.ColumnDefinitions>
+    <TextBlock Grid.Row="0" Grid.Column="0">Not Nulleable:</TextBlock>
+    <TextBox Grid.Row="0" Grid.Column="1" x:Name="NotNullTextBox">
+        <TextBox.Text>
+            <MultiBinding Converter="{StaticResource TestMultiBindingConverter}" Mode="TwoWay">
+                <Binding Path="ValueNotNull"></Binding>
+                <Binding Path="Factor"></Binding>
+                <MultiBinding.ValidationRules>
+                    <testMultiBinding:ValidateIsBiggerThanTen/>
+                </MultiBinding.ValidationRules>
+            </MultiBinding>
+        </TextBox.Text>
+    </TextBox>
+    <TextBlock Grid.Row="1" Grid.Column="0">Nulleable</TextBlock>
+    <TextBox Grid.Row="1" Grid.Column="1" x:Name="NulleableTextBox">
+        <TextBox.Text>
+            <MultiBinding Converter="{StaticResource TestMultiBindingConverter}" Mode="TwoWay" x:Name="NulleableMultiBinding">
+                <Binding Path="NulleableValue"></Binding>
+                <Binding Path="Factor"></Binding>
+                <MultiBinding.ValidationRules>
+                    <testMultiBinding:ValidateIsBiggerThanTen/>
+                </MultiBinding.ValidationRules>
+            </MultiBinding>
+        </TextBox.Text>
+    </TextBox>
+    <TextBlock Grid.Row="2" Grid.Column="0">Nulleable</TextBlock>
+    <testMultiBinding:TextBoxWrapper Grid.Row="2" Grid.Column="1" Value="{Binding UserControlNulleableValue}" AnotherProperty="3"></testMultiBinding:TextBoxWrapper>
+</Grid>
+    </Window>
