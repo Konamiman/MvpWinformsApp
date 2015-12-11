@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("MvpWinformsApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Sunhotels")]
+[assembly: AssemblyCompany("Konamiman")]
 [assembly: AssemblyProduct("MvpWinformsApp")]
-[assembly: AssemblyCopyright("Copyright © Sunhotels 2015")]
+[assembly: AssemblyCopyright("Copyright © Konamiman 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
