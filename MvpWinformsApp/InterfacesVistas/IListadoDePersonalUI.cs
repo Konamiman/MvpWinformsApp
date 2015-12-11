@@ -10,7 +10,5 @@ namespace MvpWinformsApp.InterfacesVistas
         void EstablecerPersonas(IEnumerable<PersonaResumida> personas);
 
         event EventHandler<PersonaSeleccionadaEventArgs> PersonaSeleccionada;
-
-        event EventHandler CierreSolicitado;
     }
 }
